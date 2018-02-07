@@ -16,3 +16,10 @@ Nog wat tekst  bal bla.
 > * twee
 
 En een regel.
+<figure>
+<img src="assets/function_cos.png" alt="Cosine function" />
+<img src="assets/function_abs.png" alt="Absolute function" />
+<figcaption>
+Examples of even functions
+</figcaption>
+</figure>
