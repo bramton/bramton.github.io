@@ -11,6 +11,7 @@ Symmetry of signals is a useful property for analysing signals and has an import
 
 ### Even symmetry
 A signal is said to be even symmetric if it is identical to the reflection about the origin.
+
 $$
 x(t) = x(-t)
 $$
@@ -18,34 +19,43 @@ $$
 <figure>
 	<img src="assets/function_cos.png" alt="Cosine function" width="200"/>
 	<img src="assets/function_abs.png" alt="Absolute function" width="200"/>
+	<img src="assets/function_square.png" alt="Square function" width="200"/>
 	<figcaption>
-	Two examples of even functions.
+	Three examples of even functions.
 	</figcaption>
 </figure>
 
 ### Odd symmetry
 A signal is said to be odd symmetric if:
+
 $$
 x(t) = -x(-t)
 $$
+
 <figure>
 	<img src="assets/function_sin.png" alt="Sine function" width="200"/>
 	<img src="assets/function_sigmoid.png" alt="Sigmoid function" width="200"/>
+	<img src="assets/function_cube_poly.png" alt="Cube function" width="200"/>
 	<figcaption>
-	Two examples of odd functions.
+	Three examples of odd functions.
 	</figcaption>
 </figure>
 
 ### Decomposition
 An arbitrary signal x(t) can always be expressed as a sum of an even signal and an odd signal.
+
 $$
 x(t) = x_e(t) + x_o(t)
 $$
+
 Where the even part of the signal $x_e(t)$ is given by
+
 $$
 x_e(t) = \frac{1}{2} \left[ x(t) + x(-t) \right]
 $$
+
 and the odd part of the signal $x_o (t)$ is given by
+
 $$
 x_e(t) = \frac{1}{2} \left[ x(t) - x(-t) \right]
 $$
