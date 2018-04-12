@@ -1,3 +1,25 @@
+## Analog to Digital conversion
+
+### Quantisation noise
+<figure>
+	<img src="assets/quant_error_distribution.png" alt="Quantisation error distribution" width="200"/>
+	<figcaption>
+	Probability density function of the quantisation noise.
+	</figcaption>
+</figure>
+
+The signal-to-quantisation-noise (SQNR) can be expressed in decibels as:
+$$
+SQNR = 10\log_{10}\frac{P_x}{P_n}
+$$
+Where $P_x$ is the signal power and $P_n$ is the power of the quantisation noise.
+
+$$
+P_n = \sigma_e^2 = \int_{-\inf}^{\inf} e^2 p(e) de = \frac{\Delta^2}{12}
+$$
+
+
+
 ## Fourier transform
 
 $$
@@ -42,7 +64,7 @@ $$
 </figure>
 
 ### Decomposition
-An arbitrary signal x(t) can always be expressed as a sum of an even signal and an odd signal.
+An arbitrary signal $x(t)$ can always be expressed as a sum of an even signal and an odd signal.
 
 $$
 x(t) = x_e(t) + x_o(t)
@@ -54,7 +76,7 @@ $$
 x_e(t) = \frac{1}{2} \left[ x(t) + x(-t) \right]
 $$
 
-and the odd part of the signal $x_o (t)$ is given by
+and the odd part of the signal $x_o(t)$ is given by
 
 $$
 x_e(t) = \frac{1}{2} \left[ x(t) - x(-t) \right]
