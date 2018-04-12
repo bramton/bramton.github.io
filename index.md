@@ -2,20 +2,29 @@
 
 ### Quantisation noise
 <figure>
-	<img src="assets/quant_error_distribution.png" alt="Quantisation error distribution" width="200"/>
+	<img src="assets/quant_error_distribution.png" alt="Histogram of the quantisation noise." width="400"/>
 	<figcaption>
-	Probability density function of the quantisation noise.
+	Histogram of the quantisation noise.
 	</figcaption>
 </figure>
 
+A simple model to describe the error introduced by the quantiser is an additive model.
+
+$$
+e[n] = x_q[n] - x[n]
+$$
+This error is often called quantisation noise.
+
 The signal-to-quantisation-noise (SQNR) can be expressed in decibels as:
+
 $$
 SQNR = 10\log_{10}\frac{P_x}{P_n}
 $$
-Where $P_x$ is the signal power and $P_n$ is the power of the quantisation noise.
+
+Where $P_x$ is the signal power and $P_n$ is the power of the quantisation noise. The quantisation noise power can be derived from its probability density function.
 
 $$
-P_n = \sigma_e^2 = \int_{-\inf}^{\inf} e^2 p(e) de = \frac{\Delta^2}{12}
+P_n = \sigma_e^2 = \int_{-\infty}^{\infty} e^2 p(e) de = \frac{1}{\Delta} \int_{-\frac{\Delta}{2}}^{\frac{\Delta}{2}} e^2 de = \frac{\Delta^2}{12}
 $$
 
 
