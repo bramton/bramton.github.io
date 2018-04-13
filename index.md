@@ -114,20 +114,27 @@ These filters can be implemented efficiently as only the contribution of the old
 import scipy.signal as signal
 
 plt.figure()
-L=4
+L = 4
 w, h = signal.freqz(np.ones((L, 1)), L)
 plt.plot(w, 20*np.log10(np.abs(h)))
 ~~~
 
 ### Notch filter
+Notch filters are very good at filtering out a single frequency. A common application of notch filters is to remove any interference at 50Hz caused by power lines.
+The transfer function of the notch filter is:
+
+$$
+H(z) = \frac{1 -2\cos(\omega_n)z^{-1} + z^{-2}}{1 -2r\cos(\omega_n)z^{-1} + r^2z^{-2}}
+$$
+
+<figure>
+	<img src="assets/filter_notch.png" alt="Notch filter" width="400"/>
+	<figcaption>
+	Frequency response of a notch filter ($\omega_n = 0.6\pi$)
+	</figcaption>
+</figure>
 
 
-~~~ matlab
-y = fft(x)
-% comment
-~~~
-
-Nog wat tekst  bal bla.
 
 > This is a block quote ?
 > Met een
