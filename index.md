@@ -111,6 +111,7 @@ These filters can be implemented efficiently as only the contribution of the old
 </figure>
 
 ~~~ python
+import matplotlib.pyplt as plt
 import scipy.signal as signal
 
 plt.figure()
@@ -124,7 +125,13 @@ Notch filters are very good at filtering out a single frequency. A common applic
 The transfer function of the notch filter is:
 
 $$
-H(z) = \frac{1 -2\cos(\omega_n)z^{-1} + z^{-2}}{1 -2r\cos(\omega_n)z^{-1} + r^2z^{-2}}
+H(z) = \frac{1 -2\cos(\omega_n) z^{-1} + z^{-2}}{1 -2r\cos(\omega_n) z^{-1} + r^2 z^{-2}}
+$$
+
+Where $\omega_n$ is the normalised (with respect to the sampling frequency) frequency to null out. The parameter $r$ defines the width of the frequency dip and should be between zero and one.
+
+$$
+\omega_n = 2\pi \frac{f_{null}}{f_{sample}}
 $$
 
 <figure>
@@ -134,7 +141,17 @@ $$
 	</figcaption>
 </figure>
 
-
+~~~ python
+import matplotlib.pyplt as plt
+import scipy.signal as signal
+r = 0.9
+wn = 0.6*np.pi
+b = [1, -2*np.cos(wn), 1]
+a = [1, -2*r*np.cos(wn), r*r]
+plt.figure()
+w, h = signal.freqz(b,a)
+plt.plot(w, 20*np.log10(np.abs(h)))
+~~~
 
 > This is a block quote ?
 > Met een
