@@ -13,6 +13,7 @@ A simple model to describe the error introduced by the quantiser is an additive 
 $$
 e[n] = x_q[n] - x[n]
 $$
+
 This error is often called quantisation noise.
 
 The signal-to-quantisation-noise (SQNR) can be expressed in decibels as:
@@ -90,6 +91,35 @@ and the odd part of the signal $x_o(t)$ is given by
 $$
 x_e(t) = \frac{1}{2} \left[ x(t) - x(-t) \right]
 $$
+
+## Useful digital filters
+
+### Moving average filter
+Moving average filters are used for smoothing a signal. 
+The transfer function of a moving average filter of length $L$ is defined as:
+
+$$
+H(z) = \frac{1 + z^{-1} + z^{-2} + \ldots + z^{1-L}}{L}
+$$
+
+These filters can be implemented efficiently as only the contribution of the oldest sample has to be removed and the contribution of the newest sample should be added.
+<figure>
+	<img src="assets/filter_mav.png" alt="Moving average filter" width="400"/>
+	<figcaption>
+	Frequency response of the moving average filter for three different lengths.
+	</figcaption>
+</figure>
+
+~~~ python
+import scipy.signal as signal
+
+plt.figure()
+L=4
+w, h = signal.freqz(np.ones((L, 1)), L)
+plt.plot(w, 20*np.log10(np.abs(h)))
+~~~
+
+### Notch filter
 
 
 ~~~ matlab
