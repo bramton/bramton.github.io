@@ -38,6 +38,16 @@ $$
 
 Where $c_0$, $A_n$ and $\phi_n$ are based on the complex Fourier coefficients $c_n$.
 
+### Fourier for programmers
+This section is ment for programmers, the Fourier transform can be considred as a black box. A time domain signal is fed in and the frequency components appear at the output. Remember from the previous section that the spectrum of sampled signals is periodic, hence the frequency span of interest is $F_s$. This span usually ranges from $-\frac{F_s}{2}$ till $\frac{F_s}{2}$. Within this span $N$ equally spaced discrete frequencies are defined and the prescence of each of these frequencies within the signal is evaluated. For example if the sampling frequency is 900Hz and $N=9$ the precence of the following frequencies is evaluated:
+
+$$
+-400, -300, -200, -100, 0, 100, 200, 300, 400
+$$
+
+
+
+
 ## Symmetry
 Symmetry of signals is a useful property for analysing signals and has an important role in the theory of power series and Fourier series. 
 
@@ -152,12 +162,4 @@ plt.figure()
 w, h = signal.freqz(b,a)
 plt.plot(w, 20*np.log10(np.abs(h)))
 ~~~
-
-> This is a block quote ?
-> Met een
-> # Header ? huh
-> * een
-> * twee
-
-En een regel.
 
