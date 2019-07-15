@@ -1,5 +1,6 @@
 
-[introduction](00_introduction.md)
+[Introduction](00_introduction.md)
+[Frequency domain](01_frequency_domain.md)
 
 ## Analog to Digital conversion
 
@@ -48,6 +49,10 @@ $$
 -400, -300, -200, -100, 0, 100, 200, 300, 400
 $$
 
+~~~ MATLAB
+
+
+~~~
 
 
 
