@@ -4,8 +4,9 @@ layout: default
 
 # Frequency domain
 Learning outcomes for this chapter are:
-  * la
-  * la
+  * describe the relation between the three parameters of a cosine and the frequency spectrum
+  * sketch the spectrum given a time-domain function consisting of weighted cosines
+  * use MATLAB or Python to tranform a signal to the frequency domain and plot the corresponding spectrum with a correct frequency axis
 
 ## An example
 An important engineering tool is the Fourier transform. This transform maps a signal from the time domain into the frequency domain. This new representation of the signal can provide valuable insights. As an example, consider an audio fragment which has been distorted with an interference frequency. An example of a distorted audio fragment is provided below:
