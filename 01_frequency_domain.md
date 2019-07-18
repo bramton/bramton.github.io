@@ -43,7 +43,7 @@ $$
 $$
 
 As you can see also negative frequencies are considered but they are usually omitted when plotting the spectrum, as the spectrum is symmetric. If only the positive frequencies are plotted it is called the single-sided spectrum, if negative frequencies are plotted as well it is called a double-sided spectrum. The FFT function returns an array of `N` elements which contain the complex Fourier coefficients. A complex number can describe a magnitude and an angle (the phase) at the same time. Both MATLAB and Python list the coeffiecient for positive frequencies first, followed by the coeffiecient of the negative frequencies. As an example, given the following time-domain function 
-$f(t) = 3 + 2cos(2\dot \pi \dot 20 t + \pi/4)$ which is sampled at 100 Hz. The FFT is applied with `N = 10` and will return the following Fourier coefficients:
+$f(t) = 3 + 2cos(2 \pi 20 t + \pi/4)$ which is sampled at 100 Hz. The FFT is applied with `N = 10` and will return the following Fourier coefficients:
 
 | Array index | Frequency component (Hz)| Fourier coefficient |
 |-------------| ------------------------| ------------------- |
@@ -58,11 +58,11 @@ $f(t) = 3 + 2cos(2\dot \pi \dot 20 t + \pi/4)$ which is sampled at 100 Hz. The F
 | 8           | -20                     | 0.71 - 0.71j        |
 | 9           | -10                     | 0 + 0j              |
 
-For example, the Fourier coefficient at array index 2 equals `0.71 + 0.71j` if we look at the magnitude of this complex number it will be 1 and if we look at the angle of this complex number it will be $pi/4$. The angle is exactly the same as the phase of the cosine, but the magnitude does not match the amplitude of the cosine. This is because the energy is divided equally amongst negative and positive frequencies, hence both 20 and -20 Hz have a magnitude of 1. The frequency 0 Hz is the DC component (also called the bias sometimes) of the signal and in the example has a magnitude of 3.
+For example, the Fourier coefficient at array index 2 equals `0.71 + 0.71j` if we look at the magnitude of this complex number it will be 1 and if we look at the angle of this complex number it will be $\pi/4$. The angle is exactly the same as the phase of the cosine, but the magnitude does not match the amplitude of the cosine. This is because the energy is divided equally amongst negative and positive frequencies, hence both 20 and -20 Hz have a magnitude of 1. The frequency 0 Hz is the DC component (also called the bias sometimes) of the signal and in the example has a magnitude of 3.
 
 Positive frequencies are listed first to easily plot single-sided spectra, the array needs to be indexed from 0 till 4 in this case.
 
-To make optimal use of the _Fast_ within the FFT function the parameter `N` should be a power of 2. On a normal desktop/laptop it will be hardly noticable, but when working on an embedded system or if performance is really an issue it is something to remember.
+To make optimal use of the _Fast_ of the FFT function the parameter `N` should be a power of 2. On a normal desktop/laptop it will be hardly noticable, but when working on an embedded system or if performance is really an issue it is something to remember.
 
 ### MATLAB
 Onwards to the fun part, the code. This section shows how to plot a double-sided spectrum of a signal. It is the same signal as in the previous section.
@@ -87,18 +87,19 @@ The tricky part when plotting the spectrum is to get the frequency axis correct.
 </figure>
 
 ### Python
-This section show howto plot a double-spectrum using Python, the libraries used are Numpy and Matplotlib.
-
+This section show howto plot a double-spectrum using Python in combination with the Numpy and Matplotlib libraries.
 ~~~ Python
 fs = 100
 N = 10
-spec = np.fft.fft(x, N)
+spec = np.fft.fft(x, N)/N
 freq_axis = np.fft.fftfreq(N, 1/fs)
 plt.figure
-plt.stem(freq_axis, np.abs(spec)/N, basefmt=" ")
+plt.stem(freq_axis, np.abs(spec), basefmt=" ")
 plt.xlabel('f (Hz)')
 plt.ylabel('Magnitude')
 ~~~
+
+Luckily Numpy provides a `fftfreq` which is a nice convenience function to get the tricky frequency axis correct. This also saves us doing an `fftshift` operation. The `basefmt` argument to the `plt.stem` function prevents drawing an unnesecary baseline in the plot. The final result can be seen in the figure below.
 
 <figure>
 	<img src="/assets/freq_spectrum_Python.png" alt="Spectum plotted with Python" width="400"/>
@@ -106,3 +107,7 @@ plt.ylabel('Magnitude')
 		Spectrum plotted with Python
 	</figcaption>
 </figure>
+
+## Test your knowledge
+<iframe src="https://h5p.org/h5p/embed/382337" width="1091" height="207" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
